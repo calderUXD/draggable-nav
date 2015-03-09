@@ -1,13 +1,19 @@
 jQuery(document).ready(function($) {
 
-	// setup defaults
+// setup defaults
 	hideElements = function(){
 		$('.slide-title a').hide();
 		$('.slide-title').removeClass('active');
         $('.sim-detail').hide();
 	}
+
+    accordReset = function(){
+        $('.sim-detail').hide();
+        $('.accord').removeClass('active');
+
+    }
         
-    //setup elements        
+//setup elements        
     $( '.draggable' ).draggable({ 
         revert: 'invalid',
         snap: '.droppable',
@@ -25,7 +31,7 @@ jQuery(document).ready(function($) {
         drop: function( event, ui ) {}
     });            
        
-    //Set Up Click Events.
+//Set Up Slider Click Events.
     $( '#orig' ).click(function() {
         $('.draggable').css('left', '0px');
         hideElements();
@@ -61,7 +67,7 @@ jQuery(document).ready(function($) {
         $('.detail-sport').fadeIn();
     });
             
-    //setup draggable
+//setup draggable
     $( '#orig' ).droppable({
         drop: function( event, ui ) {
             hideElements();
@@ -96,6 +102,32 @@ jQuery(document).ready(function($) {
             $('.tle-sport').addClass('active');
             $('.detail-sport').fadeIn();            
         }
+    });
+
+//Setup Accordion for Mobile
+    $( '.ac-orig' ).click(function() {
+        accordReset();
+        $(this).addClass('active');
+        $('.detail-orig').fadeIn();
+    });
+    
+    $( '.ac-elite' ).click(function() {
+        accordReset();
+        $(this).addClass('active');
+        $('.detail-elite').fadeIn();
+    });
+    
+    $( '.ac-wide' ).click(function() {
+        accordReset();
+        $(this).addClass('active');
+        $('.detail-wide').fadeIn();
+    });
+
+
+    $( '.ac-sport' ).click(function() {
+        accordReset();
+        $(this).addClass('active');
+        $('.detail-sport').fadeIn();
     });
     
  });
